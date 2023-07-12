@@ -12,7 +12,7 @@ public class Board {
 
     public Boolean isInFavorOfX() {
         boolean result = false;
-        if (isRowWin('X') == true){
+        if ((isRowWin('X') == true) || (isColumnWin('X') == true)) {
             return true;
         }
         return result;
@@ -20,14 +20,18 @@ public class Board {
 
     public Boolean isInFavorOfO() {
         boolean result = false;
-        if (isRowWin('O') == true){
+        if ((isRowWin('O') == true) || (isColumnWin('O') == true)) {
             return true;
         }
         return result;
     }
 
     public Boolean isTie() {
-        return null;
+        boolean result = false;
+        if (isInFavorOfO() == false && isInFavorOfX() == false){
+            result = true;
+        }
+        return result;
     }
 
     public String getWinner() {
@@ -37,7 +41,17 @@ public class Board {
     public boolean isRowWin(char input) {
         boolean result = false;
         for (int i = 0; i<3; i++) {
-            if (matrix [i][0] == input && matrix[i][0] == matrix[i][1] && matrix[i][1]== matrix[i][2]) {
+            if (matrix[i][0] == input && matrix[i][0] == matrix[i][1] && matrix[i][1]== matrix[i][2]) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean isColumnWin(char input) {
+        boolean result = false;
+        for (int i = 0; i < 3; i++) {
+            if (matrix[0][i] == input && matrix[0][i] == matrix [1][i] && matrix[1][i] == matrix[2][i]) {
                 result = true;
             }
         }
