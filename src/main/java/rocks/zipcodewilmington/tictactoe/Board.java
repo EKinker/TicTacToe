@@ -35,7 +35,13 @@ public class Board {
     }
 
     public String getWinner() {
-        return null;
+        String result = "";
+        if (isInFavorOfX() == true){
+            result = "X";
+        } else if (isInFavorOfO() == true){
+            result = "O";
+        }
+        return result;
     }
 
     public boolean isRowWin(char input) {
