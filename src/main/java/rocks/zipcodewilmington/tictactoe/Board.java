@@ -12,7 +12,7 @@ public class Board {
 
     public Boolean isInFavorOfX() {
         boolean result = false;
-        if ((isRowWin('X') == true) || (isColumnWin('X') == true)) {
+        if ((isRowWin('X') == true) || (isColumnWin('X') == true) || (isDiagonalWin('X') == true)) {
             return true;
         }
         return result;
@@ -20,7 +20,7 @@ public class Board {
 
     public Boolean isInFavorOfO() {
         boolean result = false;
-        if ((isRowWin('O') == true) || (isColumnWin('O') == true)) {
+        if ((isRowWin('O') == true) || (isColumnWin('O') == true) || (isDiagonalWin('O') == true)) {
             return true;
         }
         return result;
@@ -56,6 +56,21 @@ public class Board {
             }
         }
         return result;
+    }
+
+    public boolean isDiagonalWin(char input) {
+        boolean result = false;
+        int l2rCounter = 0;
+        int r2lCounter = 0;
+        for (int i = 0; i < 3; i++){
+                if (matrix[i][i] == input){
+                    l2rCounter++;
+                }
+                if (matrix[i][2-i] == input) {
+                    r2lCounter++;
+                }
+        }
+        return (l2rCounter == 3 || r2lCounter == 3);
     }
 
 }
